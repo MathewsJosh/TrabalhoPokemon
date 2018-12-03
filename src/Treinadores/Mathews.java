@@ -8,6 +8,7 @@ package Treinadores;
 import java.util.Collection;
 
 /**
+ * Classe de Treinador Pronto - Mathews
  *
  * @author Mathews
  */
@@ -21,14 +22,14 @@ public class Mathews
     protected int nivel = 2;
     protected int xpT = 30;
 
-    //protected Collection pokes;
     public Mathews()
     {
     }
 
-    /**Apresenta todos os dados do treinador atual
-     * 
-     * @return 
+    /**
+     * Apresenta todos os dados do treinador atual
+     *
+     * @return
      */
     public String apresentaTreinador()
     {
@@ -79,10 +80,12 @@ public class Mathews
         }
         else
         {
-            int i,j=soma/100;
-            this.xpT=soma;
-            for(i=0;i<j;i++)
+            int i, j = soma / 100;
+            this.xpT = soma;
+            for (i = 0; i < j; i++)
+            {
                 this.xpT = this.xpT - 100;
+            }
             subirDeNivel(xp / 100);
             System.out.println("\n=>Você subiu de nivel!!!!");
             System.out.println("=>Xp Atual: " + getXpT());
@@ -90,11 +93,6 @@ public class Mathews
         }
 
     }
-    
-    
-    
-    
-    
 
     /**
      * GETTERS E SETTERS

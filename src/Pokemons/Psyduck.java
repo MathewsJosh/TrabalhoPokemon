@@ -43,6 +43,11 @@ public class Psyduck
     int defB = defesa.nextInt(defesaBasica);
     int defE = defesa.nextInt(defesaEspecial);
 
+    /**
+     * Classe que define o Dano que o pokemon sofre
+     *
+     * @param dano
+     */
     public void sofrerDano(int dano)
     {
         if (opcao == 0)              //defesa especial
@@ -55,12 +60,21 @@ public class Psyduck
         }
     }
 
+    /**
+     * Classe que chama o audio para ser executado
+     *
+     */
     public void emitesom()
     {
         TocarSom som1 = new TocarSom();
         som1.play(som);
     }
 
+    /**
+     * Apresenta os dados do pokemon
+     *
+     * @return
+     */
     public String apresentar()
     {
         emitesom();
@@ -79,6 +93,11 @@ public class Psyduck
 
     Agua a = new Agua(ataqueBasico, ataqueEspecial);
 
+    /**
+     * Seleciona um ataque e retorna seu dano
+     *
+     * @return
+     */
     public int atacar()
     {
         dano = a.escolheAtaqueAgua();
@@ -86,6 +105,11 @@ public class Psyduck
 
     }
 
+    /**
+     * Define de acordo com 1/4 de chance de sair determinado ataque
+     *
+     * @return
+     */
     public String qualAtaque()
     {
         int x = a.qualAtaque;

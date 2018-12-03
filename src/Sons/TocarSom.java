@@ -10,7 +10,7 @@ import java.applet.AudioClip;
 import java.net.URL;
 import javax.swing.JFrame;
 
-/**
+/** Classe para tocar o som do pokemon
  *
  * @author Mathews
  */
@@ -20,6 +20,10 @@ public class TocarSom extends JFrame
     {
         
     }
+    /** Quando chamada, essa função executa o som do pokemon
+     * 
+     * @param nomeDoAudio 
+     */
     public void play(String nomeDoAudio)
     {
     URL url = TocarSom.class.getResource(nomeDoAudio+".wav");

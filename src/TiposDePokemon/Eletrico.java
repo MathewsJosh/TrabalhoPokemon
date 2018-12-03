@@ -17,7 +17,7 @@ public class Eletrico
     protected int ataqueEspecial;
     public static int qualAtaque;
 
-    protected int qtdAtaques = 5;
+    protected int qtdAtaques = 5;                                               //4Eletrico+1basico
 
     public Eletrico(int ataqueBasico, int ataqueEspecial)
     {
@@ -53,7 +53,7 @@ public class Eletrico
         {
             case 0:                                                             //Ataque basico
                 return basicAttack();
-            case 1:                                                             //Ataques especiais tipo Grama
+            case 1:                                                             //Ataques especiais tipo Eletrico
                 return shockWave();
             case 2:
                 if (prob <= 75)
@@ -73,7 +73,7 @@ public class Eletrico
                 {
                     return basicAttack();
                 }
-            case 4:
+            case 4:                                                             //Ultimate
                 if (prob <= 25)
                 {
                     return thunderShock();
@@ -91,6 +91,11 @@ public class Eletrico
     Random attack = new Random();
     int dano;
 
+    /**
+     * Ataques básico + especiais
+     *
+     * @return
+     */
     public int basicAttack()
     {
         dano = attack.nextInt(this.ataqueBasico);

@@ -17,7 +17,7 @@ public class Inseto
     protected int ataqueEspecial;
     public static int qualAtaque;
 
-    protected int qtdAtaques = 5;
+    protected int qtdAtaques = 5;                                               //4Inseto+1basico
 
     Random attack = new Random();
     int dano;
@@ -57,7 +57,7 @@ public class Inseto
         {
             case 0:                                                             //Ataque basico
                 return basicAttack();
-            case 1:                                                             //Ataques especiais tipo Grama
+            case 1:                                                             //Ataques especiais tipo Inseto
                 return bugBuzz();
             case 2:
                 if (prob <= 75)
@@ -77,7 +77,7 @@ public class Inseto
                 {
                     return basicAttack();
                 }
-            case 4:
+            case 4:                                                             //Ultimate
                 if (prob <= 25)
                 {
                     return xScissor();
@@ -92,11 +92,17 @@ public class Inseto
         }
     }
 
+    /**
+     * Ataques básico + especiais
+     *
+     * @return
+     */
     public int basicAttack()
     {
         dano = attack.nextInt(this.ataqueBasico);
         return dano;
     }
+
     public int bugBuzz()
     {
         dano = attack.nextInt((this.ataqueEspecial - 30));

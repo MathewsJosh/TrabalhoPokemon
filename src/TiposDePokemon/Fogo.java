@@ -17,7 +17,7 @@ public class Fogo
     protected int ataqueEspecial;
     public static int qualAtaque;
 
-    protected int qtdAtaques = 5;
+    protected int qtdAtaques = 5;                                               //4Fogo+1Basico
 
     Random attack = new Random();
     int dano;
@@ -57,7 +57,7 @@ public class Fogo
         {
             case 0:                                                             //Ataque basico
                 return basicAttack();
-            case 1:                                                             //Ataques especiais tipo Grama
+            case 1:                                                             //Ataques especiais tipo Fogo
                 return ember();
             case 2:
                 if (prob <= 75)
@@ -77,7 +77,7 @@ public class Fogo
                 {
                     return basicAttack();
                 }
-            case 4:
+            case 4:                                                             //Ultimate
                 if (prob <= 25)
                 {
                     return inferno();
@@ -92,11 +92,9 @@ public class Fogo
         }
     }
 
-    /**
-     * Sobrescrição da interface de ataque básico
-     *
-     * @author Mathews
-     * @return
+    /**Ataques básico + especiais
+     * 
+     * @return 
      */
     public int basicAttack()
     {
@@ -104,12 +102,6 @@ public class Fogo
         return dano;
     }
 
-    /**
-     * Sobrescrição da interface de ataque Fogo
-     *
-     * @author Mathews
-     * @return
-     */
     public int ember()
     {
         dano = attack.nextInt(this.ataqueEspecial - 82);

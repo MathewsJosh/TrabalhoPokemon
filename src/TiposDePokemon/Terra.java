@@ -17,15 +17,13 @@ public class Terra
     protected int ataqueEspecial;
     public static int qualAtaque;
 
-    protected int qtdAtaques = 5;
+    protected int qtdAtaques = 5;                                               //4terra+1basico
 
     public Terra(int ataqueBasico, int ataqueEspecial)
     {
         this.ataqueBasico=ataqueBasico;
         this.ataqueEspecial=ataqueEspecial;
     }
-
-    
     
      /**
      * FUNÇÃO AUXILIAR Define qual ataque vai ser de forma randomica
@@ -53,9 +51,9 @@ public class Terra
 
         switch (defineAtaque1())
         {
-            case 0:                                                            
+            case 0:                                                             //Ataque Basico
                 return basicAttack();
-            case 1:                                                             
+            case 1:                                                             //Ataques do tipo Terra
                 return sandAttack();
             case 2:
                 if (prob <= 75)
@@ -75,7 +73,7 @@ public class Terra
                 {
                     return basicAttack();
                 }
-            case 4:
+            case 4:                                                             //Ultimate
                 if (prob <= 25)
                 {
                     return bulldoze();
@@ -90,6 +88,10 @@ public class Terra
         }
     }
 
+    /**Ataques básico + especiais
+     * 
+     * @return 
+     */
     Random attack = new Random();
     int dano;
 

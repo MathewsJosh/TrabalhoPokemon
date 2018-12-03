@@ -25,7 +25,6 @@ public class Veneno
         this.ataqueEspecial = ataqueEspecial;
     }
 
-    
     /**
      * FUNÇÃO AUXILIAR Define qual ataque vai ser de forma randomica
      *
@@ -34,10 +33,10 @@ public class Veneno
     public int defineAtaque1()
     {
         Random defineAtaque = new Random();
-        qualAtaque = defineAtaque.nextInt(qtdAtaques-1);
+        qualAtaque = defineAtaque.nextInt(qtdAtaques - 1);
         return qualAtaque;
     }
-    
+
     /**
      * Método atacar() seleciona o ataque de acordo com a possibilidade do mesmo
      * ocorrer
@@ -52,9 +51,9 @@ public class Veneno
 
         switch (defineAtaque1())
         {
-             case 0:                                                            
+            case 0:                                                            //Ataque Basico
                 return basicAttack();
-            case 1:                                                             
+            case 1:                                                             //Ataques do tipo Veneno
                 return acid();
             case 2:
                 if (prob <= 75)
@@ -89,7 +88,11 @@ public class Veneno
                 return basicAttack();
         }
     }
-
+    /**
+     * Ataques básico + especiais
+     *
+     * @return
+     */
     Random attack = new Random();
     int dano;
 
@@ -110,7 +113,7 @@ public class Veneno
         dano = attack.nextInt((this.ataqueEspecial - 80) + 1) + 80;
         return dano;
     }
-    
+
     public int SludgeWave()
     {
         dano = attack.nextInt((this.ataqueEspecial - 80) + 1) + 80;
@@ -121,6 +124,5 @@ public class Veneno
     {
         return this.ataqueEspecial;
     }
-    
 
 }

@@ -8,6 +8,7 @@ package Treinadores;
 import java.util.Scanner;
 
 /**
+ * Classe de Treinador Interativa
  *
  * @author Mathews
  */
@@ -20,7 +21,6 @@ public class NovoTreinador
     protected int numPokemons;
     protected int nivel;
     protected int xpT;
-//    protected Collection pokes;
 
     /**
      * Construtor "interativo" da classe Treinador Se não for passado parametro,

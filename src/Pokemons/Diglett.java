@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author Mathews
  */
-public class Diglett                                    
+public class Diglett
 {
     protected String nome = "Diglett";
     protected float peso = 0.8f;
@@ -36,30 +36,45 @@ public class Diglett
     public Diglett()
     {
     }
-    
-    
+
     Random qualDef = new Random();
     Random defesa = new Random();
-    int opcao=qualDef.nextInt(2);
-    int defB=defesa.nextInt(defesaBasica);
-    int defE=defesa.nextInt(defesaEspecial);
-    
+    int opcao = qualDef.nextInt(2);
+    int defB = defesa.nextInt(defesaBasica);
+    int defE = defesa.nextInt(defesaEspecial);
+
+    /**
+     * Classe que define o Dano que o pokemon sofre
+     *
+     * @param dano
+     */
     public void sofrerDano(int dano)
     {
-        if(opcao==0)              //defesa especial
+        if (opcao == 0)              //defesa especial
         {
-            this.hp=this.hp-(dano-defE);
+            this.hp = this.hp - (dano - defE);
         }
         else                    //defesa basica
-            this.hp=this.hp-(dano-defB);
+        {
+            this.hp = this.hp - (dano - defB);
+        }
     }
 
+    /**
+     * Classe que chama o audio para ser executado
+     *
+     */
     public void emitesom()
     {
         TocarSom som1 = new TocarSom();
         som1.play(som);
     }
 
+    /**
+     * Apresenta os dados do pokemon
+     *
+     * @return
+     */
     public String apresentar()
     {
         emitesom();
@@ -78,6 +93,11 @@ public class Diglett
 
     Terra t = new Terra(ataqueBasico, ataqueEspecial);
 
+    /**
+     * Seleciona um ataque e retorna seu dano
+     *
+     * @return
+     */
     public int atacar()
     {
         dano = t.escolheAtaqueTerra();
@@ -85,6 +105,11 @@ public class Diglett
 
     }
 
+    /**
+     * Define de acordo com 1/4 de chance de sair determinado ataque
+     *
+     * @return
+     */
     public String qualAtaque()
     {
         int x = t.qualAtaque;
@@ -104,9 +129,10 @@ public class Diglett
         return "erro!";
     }
 
-    
-    /**GETTERS E SETTERS
-     * @return 
+    /**
+     * GETTERS E SETTERS
+     *
+     * @return
      */
     public String getNome()
     {
@@ -237,12 +263,5 @@ public class Diglett
     {
         this.dano = dano;
     }
-  
-    
-    
-    
-    
-    
-    
-    
+
 }

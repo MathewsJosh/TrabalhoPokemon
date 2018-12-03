@@ -8,8 +8,9 @@ package Treinadores;
 import java.util.Collection;
 
 /**
+ * Classe de Treinador Pronto - Renan
  *
- * @author Mathews
+ * @author Renan
  */
 public class Renan
 {
@@ -21,14 +22,13 @@ public class Renan
     protected int nivel = 4;
     protected int xpT = 55;
 
-    //protected Collection pokes;
     public Renan()
     {
     }
 
     /**Apresenta todos os dados do treinador atual
-     * 
-     * @return 
+     *
+     * @return
      */
     public String apresentaTreinador()
     {
@@ -79,10 +79,12 @@ public class Renan
         }
         else
         {
-            int i,j=soma/100;
-            this.xpT=soma;
-            for(i=0;i<j;i++)
+            int i, j = soma / 100;
+            this.xpT = soma;
+            for (i = 0; i < j; i++)
+            {
                 this.xpT = this.xpT - 100;
+            }
             subirDeNivel(xp / 100);
             System.out.println("\n=>Você subiu de nivel!!!!");
             System.out.println("=>Xp Atual: " + getXpT());
@@ -90,11 +92,6 @@ public class Renan
         }
 
     }
-    
-    
-    
-    
-    
 
     /**
      * GETTERS E SETTERS

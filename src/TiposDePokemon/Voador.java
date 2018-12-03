@@ -56,7 +56,7 @@ public class Voador
         {
             case 0:                                                             //Ataque basico
                 return basicAttack();
-            case 1:                                                             //Ataques especiais tipo Grama
+            case 1:                                                             //Ataques especiais tipo Voador
                 return aerialAce();
             case 2:
                 if (prob <= 75)
@@ -92,6 +92,11 @@ public class Voador
         }
     }
 
+    /**
+     * Ataques básico + especiais
+     *
+     * @return
+     */
     public int basicAttack()
     {
         dano = attack.nextInt(this.ataqueBasico);

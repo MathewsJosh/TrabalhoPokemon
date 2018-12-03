@@ -91,6 +91,10 @@ public class Grama
         }
     }
 
+    /**Ataques básico + especiais
+     * 
+     * @return 
+     */
     public int basicAttack()
     {
         dano = attack.nextInt(this.ataqueBasico);

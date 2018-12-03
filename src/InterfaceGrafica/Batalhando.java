@@ -7,6 +7,11 @@ package InterfaceGrafica;
 
 import Pokemons.*;
 import java.awt.Toolkit;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +33,7 @@ public class Batalhando extends javax.swing.JFrame
     Vulpix v = new Vulpix();
     Zubat zu = new Zubat();
 
+    public static int pokes, danos, danoM, danoA;
     public static int roundsGanhos = 0, roundsPerdidos = 0;
 
     /**
@@ -42,6 +48,43 @@ public class Batalhando extends javax.swing.JFrame
     private void setIcon()
     {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Sprites/Pokedex.png")));
+    }
+
+    /**Método para salvar o log de batalha em um arquivo txt
+     * 
+     */
+    public void salvar()
+    {
+        try
+        {
+            FileWriter fw = new FileWriter("Log de Batalha.txt", true);
+            PrintWriter pw = new PrintWriter(fw);
+            if (pokes == 1)
+            {
+                pw.println("Pokemon = " + b.getNome());
+                pw.println("Vida Atual = " + b.hp);
+            }
+            if (pokes == 2)
+            {
+                pw.println("Pokemon = " + c.getNome());
+                pw.println("Vida Atual = " + c.hp);
+            }
+            if (pokes == 3)
+            {
+                pw.println("Pokemon = " + cha.getNome());
+                pw.println("Vida Atual = " + cha.hp);
+            }
+            pw.println("Dano causado= " + danoM);
+            pw.println("Dano sofrido= " + danoA);
+            pw.println("\n");
+            pw.flush();
+            pw.close();
+            fw.close();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(Batalhando.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -178,27 +221,26 @@ public class Batalhando extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        //int numT = Ver_Treinadores.numTreinador;
-        int danoM, danoA;
-
         if (b.hp > 0 && d.hp > 0)
         {
+            pokes = 1;
             danoM = b.atacar();
             danoA = d.atacar();
             jTextPane1.setContentType("text/html");
             d.sofrerDano(danoM);
             b.sofrerDano(danoA);
             jTextPane1.setText("<html>" + b.getNome() + "<br>" + b.qualAtaque() + "<br>Dano Causado: " + danoM + "<br>Dano Sofrido: " + danoA + "</html>");
+            salvar();
 
-            if (b.hp <= 0)
-            {
-                roundsPerdidos++;
-                jTextPane1.setText("<html>" + "<br>Você Ganhou esse Round!" + "<br>Parabéns "
-                        + b.getNome() + "<br><br>Aperte Atacar para iniciar o proximo Round:" + "</html>");
-            }
             if (d.hp <= 0)
             {
                 roundsGanhos++;
+                jTextPane1.setText("<html>" + "<br>Você Ganhou esse Round!" + "<br>Parabéns "
+                        + b.getNome() + "<br><br>Aperte Atacar para iniciar o proximo Round:" + "</html>");
+            }
+            if (b.hp <= 0)
+            {
+                roundsPerdidos++;
                 jTextPane1.setText("<html>" + "<br>Você Perdeu Esse Round!<br>" + d.getNome()
                         + " Saiu Vitorioso" + "<br><br>Aperte Atacar para iniciar o proximo Round:" + "<html>");
             }
@@ -206,42 +248,46 @@ public class Batalhando extends javax.swing.JFrame
         }
         else if (c.hp > 0 && m.hp > 0)
         {
+            System.out.println("Entrou no cater");
+            pokes = 2;
             danoM = c.atacar();
             danoA = m.atacar();
             jTextPane1.setContentType("text/html");
-            c.sofrerDano(danoM);
-            m.sofrerDano(danoA);
+            m.sofrerDano(danoM);
+            c.sofrerDano(danoA);
             jTextPane1.setText("<html>" + c.getNome() + "<br>" + c.qualAtaque() + "<br>Dano Causado: " + danoM + "<br>Dano Sofrido: " + danoA + "</html>");
-
-            if (c.hp <= 0)
-            {
-                roundsPerdidos++;
-                jTextPane1.setText("<html>" + "<br>Você Ganhou esse Round!" + "<br>Parabéns " + c.getNome() + "</html>");
-            }
+            salvar();
             if (m.hp <= 0)
             {
                 roundsGanhos++;
-                jTextPane1.setText("<html>" + "<br>Você Perdeu Esse Round!<br>" + m.getNome() + " Saiu Vitorioso" + "<html>");
+                jTextPane1.setText("<html>" + "Você Ganhou esse Round!" + "<br><br>Parabéns " + c.getNome() + "</html>");
+            }
+            if (c.hp <= 0)
+            {
+                roundsPerdidos++;
+                jTextPane1.setText("<html>" + "Você Perdeu Esse Round!<br>" + m.getNome() + " Saiu Vitorioso" + "<html>");
             }
         }
         else if (cha.hp > 0 && od.hp > 0)
         {
+            System.out.println("Entrou no charmander");
+            pokes = 3;
             danoM = cha.atacar();
             danoA = od.atacar();
             jTextPane1.setContentType("text/html");
-            cha.sofrerDano(danoM);
-            od.sofrerDano(danoA);
-            jTextPane1.setText("<html>" + c.getNome() + "<br>" + cha.qualAtaque() + "<br>Dano Causado: " + danoM + "<br>Dano Sofrido: " + danoA + "</html>");
-
-            if (cha.hp <= 0)
-            {
-                roundsPerdidos++;
-                jTextPane1.setText("<html>" + "<br>Você Ganhou esse Round!" + "<br>Parabéns " + od.getNome() + "</html>");
-            }
+            od.sofrerDano(danoM);
+            cha.sofrerDano(danoA);
+            jTextPane1.setText("<html>" + cha.getNome() + "<br>" + cha.qualAtaque() + "<br>Dano Causado: " + danoM + "<br>Dano Sofrido: " + danoA + "</html>");
+            salvar();
             if (od.hp <= 0)
             {
                 roundsGanhos++;
-                jTextPane1.setText("<html>" + "<br>Você Perdeu Esse Round!<br>" + cha.getNome() + " Saiu Vitorioso" + "<html>");
+                jTextPane1.setText("<html>" + "Você Ganhou esse Round!" + "<br><br>Parabéns " + cha.getNome() + "</html>");
+            }
+            if (cha.hp <= 0)
+            {
+                roundsPerdidos++;
+                jTextPane1.setText("<html>" + "Você Perdeu Esse Round!<br>" + od.getNome() + " Saiu Vitorioso" + "<html>");
             }
         }
         else
@@ -249,12 +295,12 @@ public class Batalhando extends javax.swing.JFrame
             if (roundsGanhos >= 2)
             {
                 jTextPane1.setContentType("text/html");
-                jTextPane1.setText("<html>" + "YOU WIN!" + "<br><br>Congratulations!" + "</html>");
+                jTextPane1.setText("<html>" + "         YOU WIN!" + "<br><br>           Congratulations!" + "</html>");
             }
             else
             {
                 jTextPane1.setContentType("text/html");
-                jTextPane1.setText("<html>" + "YOU LOOSE!" + "<br><br>TRY AGAIN!" + "</html>");
+                jTextPane1.setText("<html>" + "         YOU LOOSE!" + "<br><br>          TRY AGAIN!" + "</html>");
             }
         }
 

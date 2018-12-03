@@ -14,8 +14,7 @@ import java.awt.*;
 public class TelaInicial extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form TelaInicial
+    /** Cria uma nova Tela inicial para o jogo
      */
     public TelaInicial()
     {
